@@ -12,10 +12,10 @@ const Navbar = () => {
     { name: 'Home', href: '/' },
     { name: 'Categories', href: '#' },
     { name: 'Privacy Policy', href: '#' },
-    { name: 'Login', href: '#' },
-    { name: 'Signup', href: '#' },
     { name: 'About Us', href: '#' },
     { name: 'Watch List', href: '#' },
+    { name: 'Login', href: '#' },
+    { name: 'Signup', href: '#' },
   ];
 
   return (

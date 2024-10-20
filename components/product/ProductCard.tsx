@@ -5,6 +5,7 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import TooltipIcon from '@mui/material/Tooltip';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Register the components needed for Chart.js
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
@@ -51,7 +52,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       tooltip: {
         callbacks: {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
           label: (tooltipItem: any) => `₹${tooltipItem.raw.toLocaleString('en-IN')}`,
         },
       },
@@ -89,6 +89,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     },
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(product.link).then(() => {
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+  };
+
 
   return (
     <div className="bg-white  rounded-lg overflow-hidden transform transition duration-300 max-w-full mx-auto ">
@@ -98,10 +105,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="relative mx-auto w-48">
           {/* eslint-disable-next-line @next/next/no-img-element */}
 
-          <img
+          <Image
             className="w-full h-48 object-contain rounded-lg border"
             src={product.image}
             alt={product.title}
+            width={100}
+            height={100}
           />
           <span className="absolute top-0 left-0 bg-yellow-400 text-black text-xs px-2 py-1 rounded-br-lg shadow-md">
             {product.site.toUpperCase()}
@@ -126,7 +135,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
           <div className="flex w-full lg:max-w-[250px] mx-auto flex-col gap-0 mt-4">
             <TooltipIcon title="Copy product link" placement="right">
-              <button className="flex items-center justify-center text-gray-700 bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md transition-all">
+              <button
+                onClick={handleCopy}
+                className="flex items-center justify-center text-gray-700 bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md transition-all">
                 Copy Link <ContentCopyIcon className="ml-2" />
               </button>
             </TooltipIcon>

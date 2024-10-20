@@ -1,6 +1,7 @@
 import React from 'react';
 import { IProduct } from '../interface/Product';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ProductMiniCardProps {
     product: IProduct;
@@ -27,11 +28,18 @@ const ProductMiniCard: React.FC<ProductMiniCardProps> = ({ product, onClick }) =
             <div className="relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
 
-                <img
+                <Image
                     className="w-full h-48 object-contain"
                     src={product.image}
                     alt={product.title}
+                    width={100}
+                    height={100}
+                    quality={100}
+                    objectFit='contain'
+                    priority
+                    // layout='responsive'
                 />
+
                 <span className="absolute top-0 left-0 bg-yellow-400 text-black text-xs px-2 py-1 rounded-br-lg">
                     {product.site.toUpperCase()}
                 </span>
