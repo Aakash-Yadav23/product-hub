@@ -1,4 +1,3 @@
-import Image from "next/image";
 import SearchInput from "../global/SearchInput";
 import Loot from "../layout/Loot";
 

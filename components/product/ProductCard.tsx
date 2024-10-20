@@ -50,6 +50,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       },
       tooltip: {
         callbacks: {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
           label: (tooltipItem: any) => `₹${tooltipItem.raw.toLocaleString('en-IN')}`,
         },
       },
@@ -94,6 +96,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         {/* Product Image */}
         <div className="relative mx-auto w-48">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+
           <img
             className="w-full h-48 object-contain rounded-lg border"
             src={product.image}

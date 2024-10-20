@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import ProductMiniCard from '../product/ProductMiniCard';
 import { useProducts } from '../api/useProductQueries';
 import Loader from '../global/Loader';
+import { IProduct } from '../interface/Product';
 
 const Loot = () => {
   const router = useRouter();
@@ -56,7 +57,7 @@ const Loot = () => {
     <div>
       {/* Product Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {data?.products?.map((product: any) => (
+        {data?.products?.map((product: IProduct) => (
           <ProductMiniCard
             key={product._id}
             product={product}

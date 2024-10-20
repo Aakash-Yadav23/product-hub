@@ -8,7 +8,7 @@ interface ProductMiniCardProps {
 }
 
 const ProductMiniCard: React.FC<ProductMiniCardProps> = ({ product, onClick }) => {
-    const formattedDate = new Date(product.cratedAt!).toLocaleDateString();
+    // const formattedDate = new Date(product.cratedAt!).toLocaleDateString();
     // const product: Partial<IProduct> = {
     //     "_id": "67147d4d44fbed0e47e3cc02",
     //     "title": "Lenovo LOQ AMD Ryzen 7 Octa Core 8845HS - (16 GB/512 GB SSD/Windows 11 Home/6 GB Graphics/NVIDIA GeFor...",
@@ -21,9 +21,12 @@ const ProductMiniCard: React.FC<ProductMiniCardProps> = ({ product, onClick }) =
     //     "lowestPrice": "₹1,00,690",
     //     "highestPrice": "₹1,50,690",
     // }
+    onClick();
     return (
         <div className="bg-white shadow-md  rounded-lg overflow-hidden transform transition hover:scale-105 duration-300 max-w-xs mx-auto">
             <div className="relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+
                 <img
                     className="w-full h-48 object-contain"
                     src={product.image}
